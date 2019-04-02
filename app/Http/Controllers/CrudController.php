@@ -16,6 +16,7 @@ class CrudController extends Controller
      */
     public function index()
     {   
+        // Read
         $datas = Crud::orderBy('id','DESC')->paginate(3);
         return view('show')->with('datas',$datas);
     }
@@ -28,6 +29,7 @@ class CrudController extends Controller
      */
     public function create()
     {
+        // Create view
         return view('add');
     }
 
@@ -39,6 +41,7 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
+            // Send Data
         $this->validate($request,['judul'=>'required',
             'isi'=>'required']);
 
@@ -59,6 +62,8 @@ class CrudController extends Controller
      */
     public function show($id)
     {
+
+        // Read data
         
         $tampilkan = Crud::find($id);
         return view('tampil')->with('tampilkan', $tampilkan);   
@@ -74,6 +79,7 @@ class CrudController extends Controller
      */
     public function edit($id)
     {
+        // Edit Data
         $tampiledit = Crud::where('id', $id)->first();
         return view('edit')->with('tampiledit', $tampiledit);
     }
@@ -87,6 +93,8 @@ class CrudController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        // Update Data
          $update = Crud::where('id', $id)->first();
         $update->judul = $request['judul'];
         $update->isi = $request['isi'];
@@ -103,6 +111,7 @@ class CrudController extends Controller
      */
     public function destroy($id)
     {
+        // Delete Data
             $hapus = Crud::find($id);
         $hapus->delete();
 

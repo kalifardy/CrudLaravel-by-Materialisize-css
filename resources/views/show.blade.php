@@ -6,6 +6,18 @@
 </div>
 
 <div class="section">
+
+    <div class="section">
+<form action="{{ url('query') }}" method="GET">
+    <div class="row">
+          <div class="input-field col s12">
+            <input type="text" class="validate" name="q">
+            <label for="title">Cari</label>
+          </div>
+           <button type="submit" class="btn btn-flat pink accent-3 waves-effect waves-light white-text right">Cari <i class="material-icons right">search</i></button>
+    </div>
+ </form>
+ 
     @foreach($datas as $data)
 
     <div class="row">
@@ -25,8 +37,8 @@
 </div>
 {{ $datas->render() }}
 
-<div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large red">
+<div  class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
+    <a href="{{ url('add') }}" class="btn-floating btn-large red">
       <i class="large material-icons">add</i>
     </a>
   </div>
